@@ -25,7 +25,7 @@ This blog shares about my study journey and mostly about university mathematics.
 
 **How to use it?**: Go to [Courses](https://goodbilly.github.io/hkumath/). Then, enter the passwords for the notes.
 
-![profile-readme-example](./images/HKU math courses website.png)
+<img src="/images/HKU math courses website.png" alt="Alt Text" width="800px">
 
 <footer>
 
