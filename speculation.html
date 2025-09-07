@@ -2,40 +2,84 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Daily Speculation on Mathematics">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Speculation</title>
     <style>
+        /* Modern Academic Style */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --text: #333;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
             margin: 0;
-            padding: 20px;
-            background-color: #f9f9f9;
+            padding: 0;
+            background-color: var(--light);
         }
+
         header, footer {
-            text-align: center;
-            background: #333;
+            background-color: var(--primary);
             color: white;
-            padding: 10px 0;
+            padding: 1.5rem 0;
+            text-align: center;
         }
+        
         main {
-            margin-top: 20px;
-            padding: 20px;
-            background: white;
-            border: 1px solid #ccc;
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        
+        .date-block {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: #e0e0e0;
             border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .verdict-button {
+            padding: 10px 15px;
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .verdict-button:hover {
+            background-color: darkred;
+        }
+
+        #verdict {
+            margin-top: 10px;
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <h1>Daily Speculation</h1>
     </header>
     <main>
-        <h2 id="predictionTitle"></h2>
+        <div class="date-block">
+            <h2 id="predictionTitle"></h2>
+            <button class="verdict-button" onclick="showVerdict()">Verdict</button>
+        </div>
         <p id="predictionText"></p>
+        <p id="verdict" style="display:none;"></p>
     </main>
     <footer>
-        <p>&copy; 2025 HKU Mathematics Courses</p>
+        <p>Created in July 2025</p>
     </footer>
     <script>
         const predictions = [
@@ -51,6 +95,12 @@
 
         document.getElementById("predictionTitle").innerText = "Prediction for " + today.toLocaleDateString();
         document.getElementById("predictionText").innerText = predictions[index];
+
+        function showVerdict() {
+            const verdictText = "You can check this prediction periodically to see if it's accurate!";
+            document.getElementById("verdict").innerText = verdictText;
+            document.getElementById("verdict").style.display = "block";
+        }
     </script>
 </body>
 </html>
