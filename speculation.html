@@ -31,76 +31,113 @@
             text-align: center;
         }
         
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+        
         main {
             max-width: 1200px;
             margin: 3rem auto;
             padding: 0 2rem;
         }
         
-        .date-block {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
+        .prediction-block {
             background: #e0e0e0;
             border-radius: 5px;
             margin-bottom: 20px;
+            padding: 15px;
         }
 
-        .verdict-button {
-            padding: 10px 15px;
-            background-color: var(--secondary);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+        .prediction-title {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
         }
 
-        .verdict-button:hover {
-            background-color: darkred;
+        .prediction {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
         }
 
-        #verdict {
-            margin-top: 10px;
+        .status-icon {
+            margin-left: 10px;
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Daily Speculation</h1>
+        <div class="header-container">
+            <h1>Hei Chun's Math World</h1>
+            <nav>
+                <a href="home.html">Home</a>
+                <a href="index.html">Courses</a>
+                <a href="speculation.html">Speculation</a>
+            </nav>
+        </div>
     </header>
     <main>
-        <div class="date-block">
-            <h2 id="predictionTitle"></h2>
-            <button class="verdict-button" onclick="showVerdict()">Verdict</button>
-        </div>
-        <p id="predictionText"></p>
-        <p id="verdict" style="display:none;"></p>
+        <h2>Predictions</h2>
+        <div id="predictionsList"></div>
     </main>
     <footer>
         <p>Created in July 2025</p>
     </footer>
     <script>
         const predictions = [
-            "Today’s speculation: Mathematics will unlock new technologies.",
-            "Today's speculation: Increased focus on data science will transform education.",
-            "Today's speculation: Mathematics will continue to evolve with AI advancements.",
-            "Today's speculation: The importance of statistics will grow in everyday decision-making.",
-            "Today's speculation: Geometry will inspire new architectural designs."
+            { date: "9/7/2025", text: "Robhinhood (HOOD) will reach 120 the next trading day.", status: "true" },
+            { date: "9/8/2025", text: "Nvidia will reach 180 by October 2025.", status: "unknown" }
         ];
 
-        const today = new Date();
-        const index = today.getDate() % predictions.length; // Change prediction daily
+        function displayPredictions() {
+            const predictionsList = document.getElementById("predictionsList");
+            predictionsList.innerHTML = ""; // Clear existing predictions
 
-        document.getElementById("predictionTitle").innerText = "Prediction for " + today.toLocaleDateString();
-        document.getElementById("predictionText").innerText = predictions[index];
+            predictions.forEach(prediction => {
+                const blockDiv = document.createElement("div");
+                blockDiv.className = "prediction-block";
 
-        function showVerdict() {
-            const verdictText = "You can check this prediction periodically to see if it's accurate!";
-            document.getElementById("verdict").innerText = verdictText;
-            document.getElementById("verdict").style.display = "block";
+                blockDiv.innerHTML = `
+                    <div class="prediction-title">${prediction.date}</div>
+                    <div class="prediction">
+                        <span>${prediction.text}</span>
+                        <span class="status-icon">${getStatusIcon(prediction.status)}</span>
+                    </div>
+                `;
+                predictionsList.appendChild(blockDiv);
+            });
         }
+
+        function getStatusIcon(status) {
+            if (status === "true") {
+                return '<span style="color: green;">✔️</span>'; // Green tick
+            } else if (status === "false") {
+                return '<span style="color: red;">❌</span>'; // Red cross
+            } else {
+                return '<span style="color: grey;">⚪</span>'; // Grey circle
+            }
+        }
+
+        displayPredictions(); // Initially display predictions
     </script>
 </body>
 </html>
