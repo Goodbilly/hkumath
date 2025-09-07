@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Speculation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        header, footer {
+            text-align: center;
+            background: #333;
+            color: white;
+            padding: 10px 0;
+        }
+        main {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Daily Speculation</h1>
+    </header>
+    <main>
+        <h2 id="predictionTitle"></h2>
+        <p id="predictionText"></p>
+    </main>
+    <footer>
+        <p>&copy; 2025 HKU Mathematics Courses</p>
+    </footer>
+    <script>
+        const predictions = [
+            "Today’s speculation: Mathematics will unlock new technologies.",
+            "Today's speculation: Increased focus on data science will transform education.",
+            "Today's speculation: Mathematics will continue to evolve with AI advancements.",
+            "Today's speculation: The importance of statistics will grow in everyday decision-making.",
+            "Today's speculation: Geometry will inspire new architectural designs."
+        ];
+
+        const today = new Date();
+        const index = today.getDate() % predictions.length; // Change prediction daily
+
+        document.getElementById("predictionTitle").innerText = "Prediction for " + today.toLocaleDateString();
+        document.getElementById("predictionText").innerText = predictions[index];
+    </script>
+</body>
+</html>
