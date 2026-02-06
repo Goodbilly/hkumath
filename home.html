@@ -118,33 +118,6 @@
       margin-top: 3rem;
     }
 
-    /* Modal Styles */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgb(0,0,0);
-      background-color: rgba(0,0,0,0.4);
-      padding-top: 60px;
-    }
-
-    .modal-content {
-      background-color: #fefefe;
-      margin: 5% auto;
-      padding: 20px;
-      border: 1px solid #888;
-      width: 80%;
-      max-width: 400px;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-      text-align: center;
-    }
-
     .close {
       color: #aaa;
       float: right;
@@ -224,39 +197,9 @@
     </section>
   </main>
 
-  <!-- Modal Structure -->
-  <div id="examModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Explore MATH Exam Practices!</h2>
-      <p>Gain insights into past exams with our exam practices.</p>
-      <a href="Examsol.html" style="color: #e74c3c;">Go to Exam Insights</a>
-    </div>
-  </div>
-
   <footer>
     <p>Created in July 2025</p>
   </footer>
-
-  <script>
-      var modal = document.getElementById("examModal");
-      var span = document.getElementsByClassName("close")[0];
-
-      // Show the modal when the page loads
-      window.onload = function() {
-          modal.style.display = "block";
-      }
-
-      span.onclick = function() {
-          modal.style.display = "none";
-      }
-
-      window.onclick = function(event) {
-          if (event.target == modal) {
-              modal.style.display = "none";
-          }
-      }
-  </script>
 
 </body>
 </html>
